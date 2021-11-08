@@ -26,13 +26,28 @@ pipeline {
             dir('repository/dev/galasa') {
                deleteDir()
             }
+            dir('repository/codecoverage') {
+               deleteDir()
+            }
          }
       }
       
 // clone the git repos for templating
       stage('clone-repos') {
          steps {
-            dir('codecoverage') {
+            dir('codecoverage/framework') {
+               git branch: 'main',
+                   url: 'https://github.com/galasa-dev/framework.git'
+            }
+            dir('codecoverage/extensions') {
+               git branch: 'main',
+                   url: 'https://github.com/galasa-dev/extensions.git'
+            }
+            dir('codecoverage/managers') {
+               git branch: 'main',
+                   url: 'https://github.com/galasa-dev/managers.git'
+            }
+            dir('codecoverage/obr') {
                git branch: 'main',
                    url: 'https://github.com/galasa-dev/obr.git'
             }
@@ -46,7 +61,7 @@ pipeline {
          steps {
             withFolderProperties { 
                dir('codecoverage') {
-                  sh "galasabld template --obr  --template pomfetch.template --output pomfetch.xml -r ../obr/release.yaml"
+                  sh "galasabld template --obr  --template pomfetch.template --output pomfetch.xml -r ../obr/release.yaml -r ../framework/release.yaml -r ../extensions/release.yaml -r ../managers/release.yaml"
                   sh "mvn --settings ${workspace}/settings.xml -Dmaven.repo.local=${workspace}/repository -P ${MAVEN_PROFILE} -B -e -f pomfetch.xml clean process-sources"
                }
             }
