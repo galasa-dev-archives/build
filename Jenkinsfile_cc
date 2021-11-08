@@ -29,11 +29,24 @@ pipeline {
          }
       }
       
+// clone the git repos for templating
+      stage('clone-repos') {
+         steps {
+            dir('codecoverage') {
+               git branch: 'main',
+                   url: 'https://github.com/galasa-dev/obr.git'
+            }
+         }
+      }
+
+
+      
 // Build the runtime repository
       stage('fetch-maven') {
          steps {
             withFolderProperties { 
                dir('codecoverage') {
+                  sh "galasabld template --obr  --template pomfetch.template --output pomfetch.xml -r ../obr/release.yaml"
                   sh "mvn --settings ${workspace}/settings.xml -Dmaven.repo.local=${workspace}/repository -P ${MAVEN_PROFILE} -B -e -f pomfetch.xml clean process-sources"
                }
             }
