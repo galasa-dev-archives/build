@@ -11,7 +11,7 @@ docker pull couchdb:2
 echo "Pulling couchdb init"
 docker pull galasa/galasa-ras-couchdb-init-amd64:@dockerVersion@
 
-echo "Pulling api master server"
+echo "Pulling api main server"
 docker pull galasa/galasa-api-bootstrap-amd64:@dockerVersion@
 
 echo "Pulling boot"
