@@ -35,7 +35,7 @@ pipeline {
 
             stage('manifest-boot-embedded-latest') {
                when {
-                  environment name: 'GIT_BRANCH', value: 'origin/master'
+                  environment name: 'GIT_BRANCH', value: 'origin/main'
                }
                agent { 
                   label 'docker-amd64'
@@ -64,7 +64,7 @@ pipeline {
 
             stage('manifest-ras-couchdb-init-latest') {
                when {
-                  environment name: 'GIT_BRANCH', value: 'origin/master'
+                  environment name: 'GIT_BRANCH', value: 'origin/main'
                }
                agent { 
                   label 'docker-amd64'
@@ -93,7 +93,7 @@ pipeline {
 
             stage('manifest-resources-latest') {
                when {
-                  environment name: 'GIT_BRANCH', value: 'origin/master'
+                  environment name: 'GIT_BRANCH', value: 'origin/main'
                }
                agent { 
                   label 'docker-amd64'
@@ -122,7 +122,7 @@ pipeline {
 
             stage('manifest-ibm-boot-latest') {
                when {
-                  environment name: 'GIT_BRANCH', value: 'origin/master'
+                  environment name: 'GIT_BRANCH', value: 'origin/main'
                }
                agent { 
                   label 'docker-amd64'
@@ -138,7 +138,7 @@ pipeline {
 
             stage('manifest-api-bootstrap-latest') {
                when {
-                  environment name: 'GIT_BRANCH', value: 'origin/master'
+                  environment name: 'GIT_BRANCH', value: 'origin/main'
                }
                agent { 
                   label 'docker-amd64'

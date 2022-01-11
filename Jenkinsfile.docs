@@ -26,7 +26,7 @@ pipeline {
             }
             sh 'mkdir galasa.dev'
             dir('galasa.dev') {
-               git(url: 'https://github.com/galasa-dev/galasa.dev.git', branch: "master")
+               git(url: 'https://github.com/galasa-dev/galasa.dev.git', branch: "main")
             }
          }
       }
