@@ -1,3 +1,5 @@
+**This repository is no longer actively maintained therefore is being archived.**
+
 # Build
 This repository combines built projects into docker images and also makes the projects available to download as plug-ins from the eclipse update site.
 
